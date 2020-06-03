@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Neel.Core.Models.Models.EmployeeModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .CreateNew {
+        float: right;
+        margin-bottom: 10px;
+    }
+
+    th {
+        background: #1c1c5d;
+        color: #fff;
+        font-weight: 100;
+    }
+
+    table {
+        border: 1px solid #cecece;
+    }
+
+    tbody tr:first-child {
+        border: 1px solid #1c1c5d;
+    }
+
+    tr:nth-child(odd) {
+        background: rgba(228, 228, 228, 0.58);
+    }
+</style>
+<br />
+<br />
+<h4>Employee List</h4>
+
+<p>
+    @*@Html.ActionLink("Create New", "AddEditEmployee", new { htmlAttributes = new { @class = "CreateNew" } })*@
+    @Html.ActionLink("Create New", "AddEditEmployee", "Employees")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BloodGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloodGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "AddEditEmployee", new { empId = item.EmployeeId }) |
+                <a href="#" onclick="SingleDeletion(@item.EmployeeId)">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>*@
+
+<script>
+    function SingleDeletion(EmployeeId) {
+        var confirmbtn = bootbox.confirm({
+            message: "Are you sure you want to delete this Record?",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btnGreen btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result1) {
+                if (result1) {
+                    $.ajax({
+                        type: "Post",
+                        url: '/Employees/DeleteEmployeeById',
+                        data: { EmployeeId: EmployeeId },
+                        dataType: "json",
+                        success: function (result) {
+                            if (result) {
+                                var alertbtn = bootbox.alert('Data delete successfully.');
+                                var currentUrl = window.location.pathname + window.location.search;
+                                window.location.href = currentUrl;
+                            }
+                        },
+                        error: function () {
+                            var alertbtn = bootbox.alert("Error while deleting data");
+                        }
+                    });
+                }
+            }
+        })
+        alertbtn.find("div.modal-dialog").addClass("largeWidth");
+        confirmbtn.find("div.modal-dialog").addClass("largeWidth");
+    }
+</script>

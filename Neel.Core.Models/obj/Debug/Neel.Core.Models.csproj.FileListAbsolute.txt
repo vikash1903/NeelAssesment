@@ -1,0 +1,11 @@
+D:\NeelAssesment\Neel.Core.Models\bin\Debug\Neel.Core.Models.dll.config
+D:\NeelAssesment\Neel.Core.Models\bin\Debug\Neel.Core.Models.dll
+D:\NeelAssesment\Neel.Core.Models\bin\Debug\Neel.Core.Models.pdb
+D:\NeelAssesment\Neel.Core.Models\bin\Debug\EntityFramework.dll
+D:\NeelAssesment\Neel.Core.Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\NeelAssesment\Neel.Core.Models\bin\Debug\EntityFramework.xml
+D:\NeelAssesment\Neel.Core.Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\NeelAssesment\Neel.Core.Models\obj\Debug\Neel.Core.Models.csprojAssemblyReference.cache
+D:\NeelAssesment\Neel.Core.Models\obj\Debug\Neel.Core.Models.csproj.CopyComplete
+D:\NeelAssesment\Neel.Core.Models\obj\Debug\Neel.Core.Models.dll
+D:\NeelAssesment\Neel.Core.Models\obj\Debug\Neel.Core.Models.pdb
